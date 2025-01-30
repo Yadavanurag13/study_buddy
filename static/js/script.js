@@ -67,3 +67,33 @@ if (photoInput)
 // Scroll to Bottom
 const conversationThread = document.querySelector(".room__box");
 if (conversationThread) conversationThread.scrollTop = conversationThread.scrollHeight;
+
+// Form submission handling
+const forms = document.querySelectorAll('form');
+forms.forEach(form => {
+  form.addEventListener('submit', function(e) {
+    const submitBtn = this.querySelector('button[type="submit"]');
+    if (submitBtn) {
+      const btnText = submitBtn.querySelector('.button__text');
+      const btnLoading = submitBtn.querySelector('.button__loading');
+      
+      if (btnText && btnLoading) {
+        btnText.style.display = 'none';
+        btnLoading.style.display = 'flex';
+        submitBtn.disabled = true;
+      }
+    }
+  });
+});
+
+// Add input validation feedback
+const inputs = document.querySelectorAll('input[required]');
+inputs.forEach(input => {
+  input.addEventListener('blur', function() {
+    if (this.checkValidity()) {
+      this.style.borderColor = 'var(--color-success)';
+    } else {
+      this.style.borderColor = 'var(--color-error)';
+    }
+  });
+});

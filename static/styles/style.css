@@ -1163,3 +1163,59 @@ a {
   color: var(--color-main);
   font-weight: 1.4rem;
 }
+
+/* Add after existing button styles */
+
+.spinner {
+  animation: rotate 2s linear infinite;
+  width: 20px;
+  height: 20px;
+}
+
+.spinner .path {
+  stroke: var(--color-dark);
+  stroke-linecap: round;
+  animation: dash 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}
+
+.button__loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Add form validation styles */
+.form__group input:required:invalid {
+  border-color: var(--color-error);
+}
+
+.form__group input:required:valid {
+  border-color: var(--color-success);
+}
+
+/* Add focus styles */
+.form__group input:focus {
+  box-shadow: 0 0 0 2px var(--color-main-light);
+  border-color: var(--color-main);
+}
